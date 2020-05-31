@@ -53,39 +53,30 @@
               <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="#">Devpost</a>
                 <a class="nav-item nav-link" href="#">Resume</a>
-                <a class="nav-item nav-link" href="#">Blog</a>
+                <a class="nav-item nav-link active" href="#">Blog</a>
               </div>
             </div>
           </nav>
 </header>
 
 <main role="main">
-
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1>Hi! I'm Matteo.</h1>
-      <p class="lead text-muted">This portfolio was made with Django for the backend and React.js for the frontend.</p>
-      <p>
-        <a href="mailto: magiusdarrigo@gmail.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
+        <h1 class="text-center pt-3">My Blog</h1>
+        <br />
+        <br />
+        <h2>Latest Posts</h2>
+        <hr />
+        {% for blog in blogs.all %}
+        <a href=""><h4>{{ blog.title }}</h4></a>
+        {{ blog.pub_date_pretty}}
+        <br />
+        <img class="img-fluid" src="{{blog.image.url}}" height="200" width="200"/>
+        <br />
+        <p>{{ blog.summary }}</p>
+        <br />
+        <br />
+        {% endfor %}
     </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-          {% for job in jobs.all%}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src= "{{ job.image.url}}"/>
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-          </div>
-        </div>
-    </div>
-    {% endfor %}
-  </div>
-
 </main>
 
 <footer class="text-muted">
